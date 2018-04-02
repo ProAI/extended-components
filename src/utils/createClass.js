@@ -4,7 +4,7 @@ import getDisplayName from './getDisplayName';
 import getAdvancedState from './getAdvancedState';
 
 export default function createClass(BaseComponent) {
-  class EnvelopedComponent extends React.Component {
+  class ExtendedComponent extends React.Component {
     constructor(props) {
       super(props);
 
@@ -21,7 +21,7 @@ export default function createClass(BaseComponent) {
 
     render() {
       // render with state
-      if (EnvelopedComponent.stateDefinition) {
+      if (ExtendedComponent.stateDefinition) {
         return BaseComponent(this.props, getAdvancedState(this.state, this.stateMutators));
       }
 
@@ -31,14 +31,14 @@ export default function createClass(BaseComponent) {
   }
 
   // static
-  EnvelopedComponent.isEnvelopedComponent = true;
-  EnvelopedComponent.displayName = `Enveloped(${getDisplayName(BaseComponent)})`;
+  ExtendedComponent.isExtendedComponent = true;
+  ExtendedComponent.displayName = `Extended(${getDisplayName(BaseComponent)})`;
   if (BaseComponent.defaultProps) {
-    EnvelopedComponent.defaultProps = BaseComponent.defaultProps;
+    ExtendedComponent.defaultProps = BaseComponent.defaultProps;
   }
 
   // copy non react static methods
-  hoistNonReactStatic(EnvelopedComponent, BaseComponent);
+  hoistNonReactStatic(ExtendedComponent, BaseComponent);
 
-  return EnvelopedComponent;
+  return ExtendedComponent;
 }

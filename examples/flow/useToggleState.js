@@ -15,11 +15,11 @@ type ToggleMutators = {
   reset: () => void,
 };
 
-// Use global Envelope$StateDefinition type of extended-components.
-type ToggleStateDefinition = Envelope$StateDefinition<ToggleValues, ToggleMutators>;
+// Use global Extended$StateDefinition type of extended-components.
+type ToggleStateDefinition = Extended$StateDefinition<ToggleValues, ToggleMutators>;
 
-// Use global Envelope$State type of extended-components.
-export type ToggleState = Envelope$State<ToggleValues, ToggleMutators>;
+// Use global Extended$State type of extended-components.
+export type ToggleState = Extended$State<ToggleValues, ToggleMutators>;
 
 export default function useToggleState(initialOn?: boolean): ToggleStateDefinition {
   return {

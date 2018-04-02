@@ -1,4 +1,4 @@
-# React Envelope
+# Extended Components
 
 Extend functional React.js components with default props, advanced local state (presets for common use cases like toggle, counter, ...) and lifecycle hooks.
 

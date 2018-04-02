@@ -6,34 +6,34 @@
 /*  Common used types                                                                            */
 /* --------------------------------------------------------------------------------------------- */
 
-declare type Envelope$SetState<Values, Props> = (
+declare type Extended$SetState<Values, Props> = (
   $Shape<Values> | ((state: Values, props: Props) => $Shape<Values>),
 ) => void;
 
-declare type Envelope$State<Values, Mutators> = Values & Mutators;
+declare type Extended$State<Values, Mutators> = Values & Mutators;
 
-declare type Envelope$StateDefinition<Values, Mutators> = {
+declare type Extended$StateDefinition<Values, Mutators> = {
   initial: Values,
-  mutators: (Envelope$SetState<Values, any>) => Mutators,
+  mutators: (Extended$SetState<Values, any>) => Mutators,
 };
 
 /* --------------------------------------------------------------------------------------------- */
 /*  React component types for the future                                                         */
 /* --------------------------------------------------------------------------------------------- */
 
-// declare class Envelope$React$Component<Props, AdvancedState = void> extends React$Component<
+// declare class Extended$React$Component<Props, AdvancedState = void> extends React$Component<
 //   Props,
 //   $Shape<AdvancedState>,
 // > {}
 
-// declare type Envelope$React$FunctionalComponent<Props, AdvancedState = void> = {
+// declare type Extended$React$FunctionalComponent<Props, AdvancedState = void> = {
 //   ...React$StatelessFunctionalComponent<Props>,
 //   (props: Props, state: AdvancedState): React$Node,
 // };
 
-// declare type Envelope$React$ComponentType<Props, AdvancedState> =
-//   | Envelope$React$FunctionalComponent<Props, AdvancedState>
-//   | Class<Envelope$React$Component<Props, AdvancedState>>;
+// declare type Extended$React$ComponentType<Props, AdvancedState> =
+//   | Extended$React$FunctionalComponent<Props, AdvancedState>
+//   | Class<Extended$React$Component<Props, AdvancedState>>;
 
 /* --------------------------------------------------------------------------------------------- */
 /*  Module type                                                                                  */
@@ -103,7 +103,7 @@ declare module 'extended-components' {
   // Export withState
   // ----------------------------------------------------------------------------------------------
   declare type WithState = <Props, AdvancedState>({
-    [string]: Envelope$StateDefinition<any, any>,
+    [string]: Extended$StateDefinition<any, any>,
   }) => HOC<Props, AdvancedState>;
 
   // Export statics

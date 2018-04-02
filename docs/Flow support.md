@@ -4,7 +4,7 @@ This package offers an [`index.js.flow`](../src/index.js.flow) file with Flow ty
 
 ## Types of state helpers
 
-If you include the Flow definitions of this package, you will be able to use `Envelope$State<SubStateValues, SubStateMutators>` and `Envelope$StateHelper<SubStateValues, SubStateMutators>`. See the [Flow example](../examples/flow) for usage.
+If you include the Flow definitions of this package, you will be able to use `Extended$State<SubStateValues, SubStateMutators>` and `Extended$StateHelper<SubStateValues, SubStateMutators>`. See the [Flow example](../examples/flow) for usage.
 
 ## Troubleshooting
 
