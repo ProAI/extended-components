@@ -1,0 +1,129 @@
+// @flow
+
+/* eslint-disable no-undef */
+
+/* --------------------------------------------------------------------------------------------- */
+/*  Common used types                                                                            */
+/* --------------------------------------------------------------------------------------------- */
+
+declare type Envelope$SetState<Values, Props> = (
+  $Shape<Values> | ((state: Values, props: Props) => $Shape<Values>),
+) => void;
+
+declare type Envelope$State<Values, Mutators> = Values & Mutators;
+
+declare type Envelope$StateDefinition<Values, Mutators> = {
+  initial: Values,
+  mutators: (Envelope$SetState<Values, any>) => Mutators,
+};
+
+/* --------------------------------------------------------------------------------------------- */
+/*  React component types for the future                                                         */
+/* --------------------------------------------------------------------------------------------- */
+
+// declare class Envelope$React$Component<Props, AdvancedState = void> extends React$Component<
+//   Props,
+//   $Shape<AdvancedState>,
+// > {}
+
+// declare type Envelope$React$FunctionalComponent<Props, AdvancedState = void> = {
+//   ...React$StatelessFunctionalComponent<Props>,
+//   (props: Props, state: AdvancedState): React$Node,
+// };
+
+// declare type Envelope$React$ComponentType<Props, AdvancedState> =
+//   | Envelope$React$FunctionalComponent<Props, AdvancedState>
+//   | Class<Envelope$React$Component<Props, AdvancedState>>;
+
+/* --------------------------------------------------------------------------------------------- */
+/*  Module type                                                                                  */
+/* --------------------------------------------------------------------------------------------- */
+
+declare module 'extended-components' {
+  // HOC
+  declare type HOC<Props, AdvancedState: {}> = <Component: React$ComponentType<Props>>(
+    Component,
+  ) => Component;
+
+  // Export defaultProps
+  // ----------------------------------------------------------------------------------------------
+  // TODO: Fix it. DefaultProps type does not copy statics, so it always has to be used after
+  // WithStatics.
+  /* eslint-disable flowtype/generic-spacing */
+  declare type ExtractRequiredProps<Props, Values> = $Exact<
+    $Diff<Props, $ObjMap<Values, <V>(V) => any>>,
+  >;
+  declare type ExtractDefaultProps<Props, Values> = $Exact<
+    $Diff<Props, ExtractRequiredProps<Props, Values>>,
+  >;
+
+  // PseudoDefaultProps will always be of type {}, it just checks if Values is a type subset of
+  // Props. Maybe this check will be possible without a pseudo check like this someday.
+  declare type PseudoCheckDefaultProps<Props, Values> = $Exact<
+    $Diff<Values, ExtractDefaultProps<Props, Values>>,
+  >;
+
+  declare type ComponentWithDefaultProps<Props, Values> = React$ComponentType<
+    $Diff<Props, PseudoCheckDefaultProps<Props, Values> & $ObjMap<Values, <V>(V) => any>>,
+  >;
+  /* eslint-enable */
+
+  declare type DefaultProps = <Values, Component: React$ComponentType<*>>(
+    defaultProps: Values,
+  ) => (
+    ComponentWithoutDefaultProps: Component,
+  ) => ComponentWithDefaultProps<React$ElementProps<Component>, Values>;
+
+  // Export getDerivedStateFromProps
+  // ----------------------------------------------------------------------------------------------
+  // TODO: Fix it. Inner function with props and state does not work.
+  declare type GetDerivedStateFromProps = <Props, AdvancedState>(
+    (nextProps: Props, prevState: AdvancedState) => void,
+  ) => HOC<Props, AdvancedState>;
+
+  // Export lifecycle
+  // ----------------------------------------------------------------------------------------------
+  // TODO: Fix it. Inner function with props and state does not work.
+  declare type Lifecycle = <Props, AdvancedState>(
+    (
+      props: Props,
+      state: AdvancedState,
+    ) => $Exact<{
+      componentDidMount?: () => void,
+      shouldComponentUpdate?: (nextProps: Props, nextState: AdvancedState) => boolean,
+      componentDidUpdate?: (prevProps: Props, prevState: AdvancedState) => void,
+      componentWillUnmount?: () => void,
+    }>,
+  ) => HOC<Props, AdvancedState>;
+
+  // Export pure
+  // ----------------------------------------------------------------------------------------------
+  declare type Pure = <Props, AdvancedState>() => HOC<Props, AdvancedState>;
+
+  // Export withState
+  // ----------------------------------------------------------------------------------------------
+  declare type WithState = <Props, AdvancedState>({
+    [string]: Envelope$StateDefinition<any, any>,
+  }) => HOC<Props, AdvancedState>;
+
+  // Export statics
+  // ----------------------------------------------------------------------------------------------
+  declare type ComponentWithStatics<Props, Values> =
+    | (React$StatelessFunctionalComponent<Props> & Values)
+    | (Class<React$Component<Props>> & Values);
+  declare type Statics = <Values, Props>(
+    statics: Values,
+  ) => (ComponentWithoutStatics: React$ComponentType<Props>) => ComponentWithStatics<Props, Values>;
+
+  declare module.exports: {
+    compose: $Compose,
+    defaultProps: DefaultProps,
+    getDerivedStateFromProps: GetDerivedStateFromProps,
+    lifecycle: Lifecycle,
+    pure: Pure,
+    withState: WithState,
+    statics: Statics,
+  };
+}
+
+/* eslint-enable */

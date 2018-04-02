@@ -1,0 +1,15 @@
+{
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    "no-console": "off",
+    "react/prefer-stateless-function": "off",
+    "react/prop-types": "off",
+    "react/sort-comp": "off",
+    "linebreak-style": "off",
+    "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }]
+  }
+}
