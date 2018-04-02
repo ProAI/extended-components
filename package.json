@@ -1,9 +1,8 @@
 {
   "name": "extended-components",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "./lib/index.js",
-  "description":
-    "Extend functional React.js components with default props, advanced local state (presets for common use cases like toggle, counter, ...) and lifecycle hooks.",
+  "description": "Extend functional React.js components with default props, advanced local state (presets for common use cases like toggle, counter, ...) and lifecycle hooks.",
   "author": "Markus Wetzel <markuswetzel@gmx.net>",
   "license": "MIT",
   "keywords": [
@@ -23,7 +22,11 @@
     "watch": "./node_modules/.bin/babel -d lib/ -w src/",
     "lint": "./node_modules/.bin/eslint src"
   },
-  "files": ["dist", "es", "lib"],
+  "files": [
+    "dist",
+    "es",
+    "lib"
+  ],
   "dependencies": {
     "fbjs": "^0.8.16",
     "hoist-non-react-statics": "^2.5.0"
