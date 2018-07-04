@@ -20,6 +20,8 @@
   "scripts": {
     "build": "./node_modules/.bin/babel -d lib/ src/",
     "watch": "./node_modules/.bin/babel -d lib/ -w src/",
+    "clean": "rimraf lib",
+    "prepublishOnly": "yarn clean && yarn build",
     "lint": "./node_modules/.bin/eslint src"
   },
   "files": [
@@ -36,7 +38,8 @@
     "eslint": "4.9.0",
     "react": "16.2.0",
     "react-dom": "16.2.0",
-    "react-kickstarter": "0.3.4"
+    "react-kickstarter": "0.3.4",
+    "rimraf": "2.6.2"
   },
   "peerDependencies": {
     "react": ">=15"
