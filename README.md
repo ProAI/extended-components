@@ -1,3 +1,5 @@
+_⚠️ As of React 16.8 it is recommended to use [hooks](https://reactjs.org/docs/hooks-intro.html) instead of this package._
+
 # Extended Components
 
 Extend functional React.js components with default props, advanced local state (presets for common use cases like toggle, counter, ...) and lifecycle hooks.
@@ -87,7 +89,7 @@ The purpose of this package is to enable a convient way to define state for spec
 function useCounterState() {
   return {
     initial: {
-      count: 0
+      count: 0,
     },
     mutators: setState => ({
       increment: () => {
@@ -98,8 +100,8 @@ function useCounterState() {
       },
       reset: () => {
         setState({ count: 0 });
-      }
-    })
+      },
+    }),
   };
 }
 ```
