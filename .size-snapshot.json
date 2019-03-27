@@ -1,0 +1,31 @@
+{
+  "dist/extended-components.cjs.js": {
+    "bundled": 10563,
+    "minified": 5312,
+    "gzipped": 1700
+  },
+  "dist/extended-components.umd.min.js": {
+    "bundled": 22354,
+    "minified": 8524,
+    "gzipped": 2794
+  },
+  "dist/extended-components.umd.js": {
+    "bundled": 30491,
+    "minified": 11183,
+    "gzipped": 3455
+  },
+  "dist/extended-components.esm.js": {
+    "bundled": 10170,
+    "minified": 4984,
+    "gzipped": 1620,
+    "treeshaked": {
+      "rollup": {
+        "code": 76,
+        "import_statements": 76
+      },
+      "webpack": {
+        "code": 1126
+      }
+    }
+  }
+}

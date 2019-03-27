@@ -1,7 +1,6 @@
 {
   "name": "extended-components",
   "version": "0.1.2",
-  "main": "./lib/index.js",
   "description": "Extend functional React.js components with default props, advanced local state (presets for common use cases like toggle, counter, ...) and lifecycle hooks.",
   "author": "Markus Wetzel <markuswetzel@gmx.net>",
   "license": "MIT",
@@ -17,35 +16,34 @@
   "bugs": {
     "url": "https://github.com/ProAI/extended-components/issues"
   },
+  "main": "dist/extended-components.cjs.js",
+  "module": "dist/extended-components.esm.js",
   "scripts": {
-    "build": "./node_modules/.bin/babel -d lib/ src/",
-    "watch": "./node_modules/.bin/babel -d lib/ -w src/",
-    "clean": "rimraf lib",
-    "prepublishOnly": "yarn clean && yarn build",
-    "lint": "./node_modules/.bin/eslint src"
+    "build": "packsy build",
+    "dev": "packsy dev",
+    "prepublishOnly": "packsy validate && packsy build"
   },
   "files": [
-    "dist",
-    "es",
-    "lib"
+    "dist"
   ],
   "dependencies": {
-    "fbjs": "^0.8.16",
-    "hoist-non-react-statics": "^2.5.0"
+    "fbjs": "^1.0.0",
+    "hoist-non-react-statics": "^3.3.0"
   },
   "devDependencies": {
-    "babel-cli": "6.26.0",
-    "eslint": "4.9.0",
-    "react": "16.2.0",
-    "react-dom": "16.2.0",
-    "react-kickstarter": "0.3.4",
-    "rimraf": "2.6.2"
+    "packsy": "0.1.5",
+    "react": "16.8.4"
   },
   "peerDependencies": {
     "react": ">=15"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "packsy pre-commit"
+    }
+  },
   "engines": {
-    "npm": ">=3",
-    "node": ">=5"
+    "node": ">= 8",
+    "npm": ">= 5"
   }
 }
