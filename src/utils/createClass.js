@@ -22,7 +22,10 @@ export default function createClass(BaseComponent) {
     render() {
       // render with state
       if (ExtendedComponent.stateDefinition) {
-        return BaseComponent(this.props, getAdvancedState(this.state, this.stateMutators));
+        return BaseComponent(
+          this.props,
+          getAdvancedState(this.state, this.stateMutators),
+        );
       }
 
       // render without state

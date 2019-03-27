@@ -10,7 +10,11 @@ function Component(props, { input }) {
   return (
     <div>
       Name:
-      <input type="text" value={input.value} onChange={event => input.set(event.target.value)} />
+      <input
+        type="text"
+        value={input.value}
+        onChange={event => input.set(event.target.value)}
+      />
     </div>
   );
 }

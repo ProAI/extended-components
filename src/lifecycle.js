@@ -2,7 +2,7 @@ import getEnhancedComponent from './utils/getEnhancedComponent';
 import getAdvancedState from './utils/getAdvancedState';
 
 export default function lifecycle(defineLifecycleHooks) {
-  return (BaseComponent) => {
+  return BaseComponent => {
     const EnhancedComponent = getEnhancedComponent(BaseComponent);
 
     function prepareLifecycle() {
@@ -20,13 +20,19 @@ export default function lifecycle(defineLifecycleHooks) {
       // shouldComponentUpdate hook
       if (hooks.shouldComponentUpdate) {
         this.shouldComponentUpdate = (nextProps, nextState) =>
-          hooks.shouldComponentUpdate(nextProps, getAdvancedState(nextState, this.stateMutators));
+          hooks.shouldComponentUpdate(
+            nextProps,
+            getAdvancedState(nextState, this.stateMutators),
+          );
       }
 
       // componentDidUpdate hook
       if (hooks.componentDidUpdate) {
         this.componentDidUpdate = (prevProps, prevState) => {
-          hooks.componentDidUpdate(prevProps, getAdvancedState(prevState, this.stateMutators));
+          hooks.componentDidUpdate(
+            prevProps,
+            getAdvancedState(prevState, this.stateMutators),
+          );
         };
       }
 

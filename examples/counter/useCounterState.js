@@ -10,13 +10,13 @@ export default function useCounterState(initialCount) {
       decrement: () => {
         setState(({ count }) => ({ count: count - 1 }));
       },
-      incrementBy: (value) => {
+      incrementBy: value => {
         setState(({ count }) => ({ count: count + value }));
       },
-      decrementBy: (value) => {
+      decrementBy: value => {
         setState(({ count }) => ({ count: count - value }));
       },
-      set: (value) => {
+      set: value => {
         setState({ count: value });
       },
       reset: () => {

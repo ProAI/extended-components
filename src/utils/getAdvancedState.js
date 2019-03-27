@@ -3,7 +3,7 @@ export default function getAdvancedState(state, stateMutators) {
 
   const advancedState = {};
 
-  Object.keys(state).forEach((key) => {
+  Object.keys(state).forEach(key => {
     advancedState[key] = {
       ...state[key],
       ...stateMutators[key],

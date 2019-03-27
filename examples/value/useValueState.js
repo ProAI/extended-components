@@ -4,7 +4,7 @@ export default function useValueState(initialValue) {
       value: initialValue,
     },
     mutators: setState => ({
-      set: (value) => {
+      set: value => {
         setState({ value });
       },
       reset: () => {

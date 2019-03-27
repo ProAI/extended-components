@@ -13,7 +13,7 @@ export default function useToggleState(initialOn) {
       toggle: () => {
         setState(({ on }) => ({ on: !on }));
       },
-      set: (value) => {
+      set: value => {
         setState({ on: value });
       },
       reset: () => {

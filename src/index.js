@@ -6,4 +6,12 @@ import getDerivedStateFromProps from './getDerivedStateFromProps';
 import lifecycle from './lifecycle';
 import pure from './pure';
 
-export { compose, defaultProps, withState, statics, getDerivedStateFromProps, lifecycle, pure };
+export {
+  compose,
+  defaultProps,
+  withState,
+  statics,
+  getDerivedStateFromProps,
+  lifecycle,
+  pure,
+};

@@ -5,5 +5,7 @@ export default function shallowEqualState(state, nextState) {
     return true;
   }
 
-  return Object.keys(state).every(key => shallowEqual(state[key], nextState[key]));
+  return Object.keys(state).every(key =>
+    shallowEqual(state[key], nextState[key]),
+  );
 }

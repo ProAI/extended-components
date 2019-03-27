@@ -3,12 +3,15 @@ import shallowEqualProps from './utils/shallowEqualProps';
 import shallowEqualState from './utils/shallowEqualState';
 
 export default function pure() {
-  return (BaseComponent) => {
+  return BaseComponent => {
     const EnhancedComponent = getEnhancedComponent(BaseComponent);
 
     function shouldComponentUpdate(nextProps, nextState) {
       // props or states are not equal -> update
-      if (!shallowEqualProps(this.props, nextProps) || !shallowEqualState(this.state, nextState)) {
+      if (
+        !shallowEqualProps(this.props, nextProps) ||
+        !shallowEqualState(this.state, nextState)
+      ) {
         return true;
       }
 

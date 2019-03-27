@@ -2,15 +2,15 @@ import getEnhancedComponent from './utils/getEnhancedComponent';
 import getStateUpdate from './utils/getStateUpdate';
 
 export default function withState(definition) {
-  return (BaseComponent) => {
+  return BaseComponent => {
     const EnhancedComponent = getEnhancedComponent(BaseComponent);
 
     function prepareState() {
       const initialState = {};
       const stateMutators = {};
 
-      Object.keys(definition).forEach((key) => {
-        const setState = (input) => {
+      Object.keys(definition).forEach(key => {
+        const setState = input => {
           this.setState(prevState => ({
             [key]: getStateUpdate(input, prevState[key]),
           }));

@@ -16,12 +16,17 @@ type ToggleMutators = {
 };
 
 // Use global Extended$StateDefinition type of extended-components.
-type ToggleStateDefinition = Extended$StateDefinition<ToggleValues, ToggleMutators>;
+type ToggleStateDefinition = Extended$StateDefinition<
+  ToggleValues,
+  ToggleMutators,
+>;
 
 // Use global Extended$State type of extended-components.
 export type ToggleState = Extended$State<ToggleValues, ToggleMutators>;
 
-export default function useToggleState(initialOn?: boolean): ToggleStateDefinition {
+export default function useToggleState(
+  initialOn?: boolean,
+): ToggleStateDefinition {
   return {
     initial: {
       on: initialOn !== undefined ? initialOn : false,
@@ -36,7 +41,7 @@ export default function useToggleState(initialOn?: boolean): ToggleStateDefiniti
       toggle: () => {
         setState(({ on }) => ({ on: !on }));
       },
-      set: (value) => {
+      set: value => {
         setState({ on: value });
       },
       reset: () => {

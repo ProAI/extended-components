@@ -5,7 +5,7 @@ export default function usePromiseState() {
       error: null,
     },
     mutators: setState => ({
-      bind: (promise) => {
+      bind: promise => {
         setState({
           pending: true,
           error: null,

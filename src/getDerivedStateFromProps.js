@@ -3,12 +3,15 @@ import getAdvancedState from './utils/getAdvancedState';
 import getStateUpdate from './utils/getStateUpdate';
 
 export default function getDerivedStateFromProps(fn) {
-  return (BaseComponent) => {
+  return BaseComponent => {
     const EnhancedComponent = getEnhancedComponent(BaseComponent);
 
     function staticGetDerivedStateFromProps(nextProps, prevState) {
       if (!EnhancedComponent.stateDefinition) {
-        console.error('Static getDerivedStateFromProps called, but no state defined.');
+        // eslint-disable-next-line no-console
+        console.error(
+          'Static getDerivedStateFromProps called, but no state defined.',
+        );
         return null;
       }
 
@@ -16,14 +19,16 @@ export default function getDerivedStateFromProps(fn) {
 
       // get state mutators
       const stateMutators = {};
-      Object.keys(EnhancedComponent.stateDefinition).forEach((key) => {
+      Object.keys(EnhancedComponent.stateDefinition).forEach(key => {
         // define setState
-        const setState = (input) => {
+        const setState = input => {
           state[key] = getStateUpdate(input, prevState[key]);
         };
 
         // add to state mutators
-        stateMutators[key] = EnhancedComponent.stateDefinition[key].mutators(setState);
+        stateMutators[key] = EnhancedComponent.stateDefinition[key].mutators(
+          setState,
+        );
       });
 
       // call function with state and state mutators
