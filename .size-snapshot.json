@@ -1,21 +1,21 @@
 {
   "dist/extended-components.cjs.js": {
-    "bundled": 10563,
+    "bundled": 10610,
     "minified": 5312,
     "gzipped": 1700
   },
   "dist/extended-components.umd.min.js": {
-    "bundled": 22354,
+    "bundled": 22403,
     "minified": 8524,
     "gzipped": 2794
   },
   "dist/extended-components.umd.js": {
-    "bundled": 30491,
+    "bundled": 30540,
     "minified": 11183,
     "gzipped": 3455
   },
   "dist/extended-components.esm.js": {
-    "bundled": 10170,
+    "bundled": 10217,
     "minified": 4984,
     "gzipped": 1620,
     "treeshaked": {
