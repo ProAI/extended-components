@@ -1,6 +1,6 @@
 {
   "name": "extended-components",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Extend functional React.js components with default props, advanced local state (presets for common use cases like toggle, counter, ...) and lifecycle hooks.",
   "author": "Markus Wetzel <markuswetzel@gmx.net>",
   "license": "MIT",
